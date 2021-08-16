@@ -1,2 +1,2 @@
-# spacefit-fitness-backend
+# spacefit-backend-server
 backend for Space Fitness App
