@@ -7,7 +7,8 @@ const trainingSchema = new Schema({
     trainer: {
         type: Schema.Types.ObjectId,
         ref: 'trainers'
-    }
+    },
+    createdAt: String,
 
 
 })
