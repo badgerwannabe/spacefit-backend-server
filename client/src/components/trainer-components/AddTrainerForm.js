@@ -69,6 +69,13 @@ const [createTrainer, {error}] = useMutation(ADD_TRAINERS_MUTATION, {
                values={values.phoneNumber}
                error={error ? true : false}
                />
+            <Form.Input
+               placeholder="image url"
+               name="image"
+               onChange={onChange}
+               values={values.image}
+               error={error ? true : false}
+               />
                <Button type ="submit" color="teal">Submit</Button>
         </Form.Field>
     </Form>

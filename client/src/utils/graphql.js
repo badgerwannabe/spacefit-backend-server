@@ -9,6 +9,7 @@ export const FETCH_TRAINERS_QUERY = gql`
       email
       phoneNumber
       createdAt
+      image
     }
   }
 `;
@@ -22,6 +23,7 @@ export const FETCH_TRAINER_QUERY = gql`
       email
       phoneNumber
       createdAt
+      image
     }
   }
 `;
@@ -60,12 +62,14 @@ export const ADD_TRAINERS_MUTATION = gql`
     $description: String!
     $email: String!
     $phoneNumber: String!
+    $image: String!
   ) {
     createTrainer(
       name: $name
       description: $description
       email: $email
       phoneNumber: $phoneNumber
+      image: $image
     ) {
       id
       name
@@ -73,6 +77,7 @@ export const ADD_TRAINERS_MUTATION = gql`
       email
       phoneNumber
       createdAt
+      image
     }
   }
 `;
@@ -83,6 +88,7 @@ export const EDIT_TRAINERS_MUTATION = gql`
     $email: String
     $phoneNumber: String
     $trainerId: ID!
+
   ) {
     editTrainer(
       name: $name
@@ -90,6 +96,7 @@ export const EDIT_TRAINERS_MUTATION = gql`
       email: $email
       phoneNumber: $phoneNumber
       trainerId: $trainerId
+  
     ) {
       id
       name
@@ -97,6 +104,7 @@ export const EDIT_TRAINERS_MUTATION = gql`
       email
       phoneNumber
       createdAt
+      
     }
   }
 `;

@@ -6,6 +6,7 @@ const trainerSchema = new Schema({
     email: String,
     phoneNumber: String,
     createdAt: String,
+    image: String,
 })
 
 module.exports = model('Trainer', trainerSchema);

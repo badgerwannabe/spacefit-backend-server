@@ -8,6 +8,7 @@ module.exports = gql`
     email: String!
     phoneNumber: String!
     createdAt: String!
+    image: String!
   }
   type Person {
     id: ID!
@@ -72,6 +73,7 @@ module.exports = gql`
       description: String!
       email: String!
       phoneNumber: String!
+      image: String!,
     ): Trainer!
     deleteTrainer(trainerId: ID!): String!
     editTrainer(

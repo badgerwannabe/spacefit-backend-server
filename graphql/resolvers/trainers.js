@@ -27,7 +27,7 @@ module.exports = {
     },
   },
     Mutation:{
-        async createTrainer (_, {name, description,email,phoneNumber}, context){
+        async createTrainer (_, {name, description,email,phoneNumber, image}, context){
            
             if(name.trim() === ""){
               throw new Error('Name must not be empty')
@@ -41,11 +41,15 @@ module.exports = {
             if(phoneNumber.trim() === ""){
               throw new Error('PhoneNumber must not be empty')
             }
+            if(image.trim() === ""){
+              throw new Error('Please put a image url')
+            }
             const newTrainer = new Trainer({
                 name,
                 description,
                 email,
                 phoneNumber,
+                image,
                 createdAt:  new Date().toISOString(),
       
             });
