@@ -1,28 +1,26 @@
-import React, { useContext } from "react";
+import React from "react";
 import {  Card, Image } from "semantic-ui-react";
 import moment from "moment";
 
-function TrainerCard({
-    trainer: { name, createdAt, id,  description,
-        email,
-        phoneNumber},
+function TrainingCard({
+    training: { trainingName, createdAt, id,  trainingDescription,
+        trainer},
   }) {
    
   
-   
     return (
-      <Card >
+      <Card fluid >
         <Card.Content>
           <Image
             floated="right"
             size="mini"
             src="https://react.semantic-ui.com/images/avatar/large/molly.png"
           />
-          <Card.Header>{name}</Card.Header>
+          <Card.Header>{trainingName}</Card.Header>
           <Card.Meta>
             {moment(createdAt).fromNow(true)}
           </Card.Meta>
-          <Card.Description>{description}</Card.Description>
+          <Card.Description>{trainingDescription}</Card.Description>
         </Card.Content>
         <Card.Content extra>
          
@@ -30,5 +28,5 @@ function TrainerCard({
       </Card>
     );
   }
-  export default TrainerCard;
+  export default TrainingCard;
   

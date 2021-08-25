@@ -12,9 +12,10 @@ export const FETCH_TRAINERS_QUERY = gql`
     }
   }
 `;
-export const FETCH_TRAININGS_QUERY = gql`
-  query {
-    getTrainings {
+
+export const FETCH_TRAINER_QUERY = gql`
+  query ($trainerId: ID!) {
+    getTrainer(trainerId: $trainerId) {
       id
       name
       description
@@ -24,3 +25,102 @@ export const FETCH_TRAININGS_QUERY = gql`
     }
   }
 `;
+
+
+export const FETCH_TRAININGS_QUERY = gql`
+  query {
+    getTrainings {
+      id
+      trainingName
+      createdAt
+      trainingDescription
+      trainer
+      createdAt
+    }
+  }
+`;
+
+export const FETCH_TEMPLATES_QUERY = gql`
+  query {
+    getDays {
+      id
+      date
+      dayTrainings {
+        time
+        training
+        trainer
+      }
+      createdAt
+    }
+  }
+`;
+export const ADD_TRAINERS_MUTATION = gql`
+  mutation createTrainer(
+    $name: String!
+    $description: String!
+    $email: String!
+    $phoneNumber: String!
+  ) {
+    createTrainer(
+      name: $name
+      description: $description
+      email: $email
+      phoneNumber: $phoneNumber
+    ) {
+      id
+      name
+      description
+      email
+      phoneNumber
+      createdAt
+    }
+  }
+`;
+export const EDIT_TRAINERS_MUTATION = gql`
+  mutation editTrainer(
+    $name: String
+    $description: String
+    $email: String
+    $phoneNumber: String
+    $trainerId: ID!
+  ) {
+    editTrainer(
+      name: $name
+      description: $description
+      email: $email
+      phoneNumber: $phoneNumber
+      trainerId: $trainerId
+    ) {
+      id
+      name
+      description
+      email
+      phoneNumber
+      createdAt
+    }
+  }
+`;
+
+// export const FETCH_PEOPLE_QUERY = gql`
+//   query {
+//     getPersons {
+//       id
+//       firstName
+//       lastName
+//       email
+//       phoneNumber
+//       healthnotes
+//       heardFrom
+//       status
+//       createdAt
+//       dayTrainings {
+
+//         time
+//         training
+//         trainer
+
+//       }
+//       createdAt
+//     }
+//   }
+// `;
