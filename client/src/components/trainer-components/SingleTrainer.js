@@ -16,6 +16,7 @@ function SingleTrainer(props) {
     description: "",
     email: "",
     phoneNumber: "",
+    image: ""
   });
 
   const {loading, error, data: { getTrainer } = {} } = useQuery(FETCH_TRAINER_QUERY, {
@@ -40,6 +41,7 @@ function SingleTrainer(props) {
                         description
                         email
                         phoneNumber
+                        image
                       }
                     `
                   });
@@ -65,7 +67,7 @@ function SingleTrainer(props) {
   if (!getTrainer) {
     trainerMarkup = <p>Loading trainer...</p>;
   } else {
-    const { description, name, email, phoneNumber } = getTrainer;
+    const { description, name, email, phoneNumber, image } = getTrainer;
 
     trainerMarkup = (
       <>
@@ -98,6 +100,13 @@ function SingleTrainer(props) {
               name="phoneNumber"
               onChange={onChange}
               values={values.phoneNumber}
+              error={error ? true : false}
+            />
+            <Form.Input
+              placeholder={image}
+              name="image"
+              onChange={onChange}
+              values={values.image}
               error={error ? true : false}
             />
             <Button type="submit" color="teal">

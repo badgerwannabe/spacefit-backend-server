@@ -9,6 +9,7 @@ const trainingSchema = new Schema({
         ref: 'trainers'
     },
     createdAt: String,
+    image: String,
 
 
 })

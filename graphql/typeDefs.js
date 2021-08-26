@@ -28,6 +28,7 @@ module.exports = gql`
     trainerName: String
     trainer: ID
     createdAt: String!
+    image: String!
   }
   type dayTraining {
     id: ID!
@@ -82,11 +83,13 @@ module.exports = gql`
       email: String
       phoneNumber: String
       trainerId: ID!
+      image: String
     ): Trainer!
     createTraining(
       trainingName: String!
       trainingDescription: String!
       trainerId: ID!
+      image: String!
     ): Training!
     deleteTraining(trainingId: ID!): String!
     editTraining(
@@ -94,6 +97,7 @@ module.exports = gql`
       trainingDescription: String
       trainer: ID
       trainingId: ID!
+      image: String
     ): Training!
     createDay(date: String!): Day!
     createPerson(

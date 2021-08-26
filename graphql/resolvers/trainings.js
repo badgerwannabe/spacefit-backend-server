@@ -34,10 +34,10 @@ module.exports = {
     }
     },
     Mutation:{
-        async createTraining (_, {trainingName, trainingDescription, trainerId }, context){
+        async createTraining (_, {trainingName, trainingDescription, trainerId, image }, context){
 
             const trainer = await Trainer.findById(trainerId);
-            console.log(trainer)
+     
 
             if(trainingName.trim() === ""){
               throw new Error('Training Name must not be empty')
@@ -47,6 +47,9 @@ module.exports = {
             }
             if(!trainerId){
                 throw new Error('Trainer must be chosen')
+              }
+            if(image.trim() === ""){
+                throw new Error('Enter image url')
               }
         
             const newTraining = new Training({

@@ -12,7 +12,7 @@ module.exports = {
         }, 
         async getTrainer(_, { trainerId }, context) {
         try {
-        console.log(trainerId)
+ 
         
         const trainer = await Trainer.findById(trainerId);
  
