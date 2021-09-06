@@ -13,12 +13,9 @@ import { useQuery } from "@apollo/client";
 import { FETCH_TRAINERS_QUERY } from "../../utils/graphql";
 import { Link } from "react-router-dom";
 
-
 function TrainersComponent(props) {
   const { loading, data: { getTrainers: trainers } = {} } =
     useQuery(FETCH_TRAINERS_QUERY);
-
-
 
   const TrainersComponent = (
     <Transition.Group>
@@ -31,15 +28,16 @@ function TrainersComponent(props) {
             <TrainerCard trainer={trainer} style={{ display: "block" }} />
           </Grid.Column>
         ))}
-        
+
       <Grid.Column>
-      
-        <Button primary massive style={{ paddingLeft:50, paddingRight:50, marginBottom:10  }}   as={Link}
-              to={`/add-trainer`}>
+        <Button
+          primary
+          style={{ paddingLeft: 50, paddingRight: 50, marginBottom: 10 }}
+          as={Link}
+          to={`/add-trainer`}
+        >
           <h3>Add trainer</h3>
         </Button>
-   
-     
       </Grid.Column>
     </Transition.Group>
   );

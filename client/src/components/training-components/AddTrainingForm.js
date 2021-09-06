@@ -13,15 +13,9 @@ function AddTrainingForm(props) {
   const { values, onChange, onSubmit } = useForm(createTrainingCallback, {
     trainingName: "",
     trainingDescription: "",
-    trainer: "",
-    image: "",
+    trainingImage: "",
+    trainerId: "",
   });
-// const [connectedTrainer, setConnectedTrainer] = useState("");
-
-// const onTrainerChange = (event)=>{
-//     setConnectedTrainer({...connectedTrainer, [event.target.name]: event.target.value})
-// };
-  
 
   const [createTraining, { error }] = useMutation(
     ADD_TRAININGS_MUTATION,
@@ -53,19 +47,15 @@ function AddTrainingForm(props) {
   const { loading, data: { getTrainers: trainers } = {} } =
     useQuery(FETCH_TRAINERS_QUERY);
 
-
-    const options = [];
-    trainers &&
-      trainers.map((trainer) =>
-        options.push({
-          key: trainer.id,
-          value: trainer.id,
-          text: trainer.name,
-        })
-      );
-  
-      console.log(options)
-
+  const options = [];
+  trainers &&
+    trainers.map((trainer) =>
+      options.push({
+        key: trainer.id,
+        value: trainer.id,
+        text: trainer.name,
+      })
+    );
 
   const AddTrainingForm = (
     <>
@@ -86,22 +76,21 @@ function AddTrainingForm(props) {
             values={values.trainingDescription}
             error={error ? true : false}
           />
-    
 
           <Dropdown
             options={options}
-            placeholder='Select a trainer'
-            name="trainer"
+            placeholder="Select a trainer"
+            name="trainerId"
             fluid
             selection
-            onChange={onChange }
-            values={values.value}
+            onChange={onChange}
+            values={values.trainerId}
           />
           <Form.Input
             placeholder="image url"
-            name="image"
+            name="trainingImage"
             onChange={onChange}
-            values={values.image}
+            values={values.trainingImage}
             error={error ? true : false}
           />
           <Button type="submit" color="teal">
