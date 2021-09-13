@@ -1,10 +1,12 @@
 import React from "react";
-import { Card, Image, List } from "semantic-ui-react";
+import { Card, Image, List, Button } from "semantic-ui-react";
 import moment from "moment";
+import DeleteButton from "../DeleteButton";
 
 import { FETCH_TRAINER_QUERY } from "../../utils/graphql";
 
 import { useQuery, useMutation, gql } from "@apollo/client";
+import { Link } from "react-router-dom";
 
 function TrainingCard({
   training: {
@@ -24,7 +26,7 @@ function TrainingCard({
 
   let relatedTrainer;
   if (!getTrainer) {
-    relatedTrainer = <p>No trainer data...</p>;
+    relatedTrainer = <p>No training data...</p>;
   } else {
     relatedTrainer = getTrainer.name;
   }
@@ -45,6 +47,17 @@ function TrainingCard({
             <List.Content> Trainer: {relatedTrainer}</List.Content>
           </List.Item>
         </List>
+      </Card.Content>
+      <Card.Content extra>
+        <Button
+          onClick={console.log("Edit training")}
+          as={Link}
+          to={`/trainings/${id}`}
+          primary
+        >
+          Edytuj
+        </Button>
+        <DeleteButton trainingId={id} />
       </Card.Content>
     </Card>
   );

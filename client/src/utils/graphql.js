@@ -46,9 +46,8 @@ export const FETCH_TRAINING_QUERY = gql`
     getTraining(trainingId: $trainingId) {
       id
       trainingName
-      createdAt
       trainingDescription
-      trainer
+      trainerId
       createdAt
       trainingImage
     }
@@ -80,21 +79,21 @@ export const EDIT_TRAININGS_MUTATION = gql`
   mutation editTraining(
     $trainingName: String
     $trainingDescription: String
-    $trainer: ID
-    $image: String
+    $trainerId: ID
+    $trainingImage: String
   ) {
     editTraining(
       trainingName: $trainingName
       trainingDescription: $trainingDescription
-      trainer: $trainer
-      image: $image
+      trainerId: $trainerId
+      trainingImage: $trainingImage
     ) {
       id
       trainingName
       trainingDescription
-      trainer
+      trainerId
       createdAt
-      image
+      trainingImage
     }
   }
 `;
