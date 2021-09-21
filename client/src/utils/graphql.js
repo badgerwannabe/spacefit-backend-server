@@ -164,6 +164,21 @@ export const EDIT_TRAINERS_MUTATION = gql`
   }
 `;
 
+export const FETCH_DAYS_QUERY = gql`
+  query {
+    getDays {
+      id
+      date
+      createdAt
+      dayTrainings {
+        trainer
+        training
+        time
+      }
+    }
+  }
+`;
+
 // export const FETCH_PEOPLE_QUERY = gql`
 //   query {
 //     getPersons {
