@@ -114,6 +114,7 @@ function SingleTraining(props) {
           <h2>Edit a training :</h2>
           <Form.Field>
             <Form.Input
+              defaultValue={trainingName}
               placeholder={trainingName}
               name="trainingName"
               onChange={onChange}
@@ -121,6 +122,7 @@ function SingleTraining(props) {
               error={error ? true : false}
             />
             <Form.Input
+              defaultValue={trainingDescription}
               placeholder={trainingDescription}
               name="trainingDescription"
               onChange={onChange}
@@ -128,6 +130,7 @@ function SingleTraining(props) {
               error={error ? true : false}
             />
             <Dropdown
+              defaultValue={trainerId}
               options={options}
               placeholder="wybierz trenera"
               name="trainerId"
@@ -139,6 +142,7 @@ function SingleTraining(props) {
             />
 
             <Form.Input
+              defaultValue={trainingImage}
               placeholder={trainingImage}
               name="trainingImage"
               onChange={onChange}

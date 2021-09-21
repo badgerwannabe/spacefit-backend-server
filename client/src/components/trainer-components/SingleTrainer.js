@@ -16,10 +16,14 @@ function SingleTrainer(props) {
     description: "",
     email: "",
     phoneNumber: "",
-    image: ""
+    image: "",
   });
 
-  const {loading, error, data: { getTrainer } = {} } = useQuery(FETCH_TRAINER_QUERY, {
+  const {
+    loading,
+    error,
+    data: { getTrainer } = {},
+  } = useQuery(FETCH_TRAINER_QUERY, {
     variables: {
       trainerId,
     },
@@ -27,41 +31,39 @@ function SingleTrainer(props) {
 
   const [editTrainer, { loading: mutationLoading, error: mutationError }] =
     useMutation(EDIT_TRAINERS_MUTATION, {
-        errorPolicy: 'all',
-        variables:values, 
-        update(cache, { data: { editTrainer } }) {
-            cache.modify({
-              fields: {
-                info(existingInfo = []) {
-                  const newInfoRef = cache.writeFragment({
-                    data: editTrainer,
-                    fragment: gql`
-                      fragment newInfo on Trainer {
-                        name
-                        description
-                        email
-                        phoneNumber
-                        image
-                      }
-                    `
-                  });
-                  return [...existingInfo, newInfoRef];
-                }
-              }
-            });
-            props.history.push('/trainers')
+      errorPolicy: "all",
+      variables: values,
+      update(cache, { data: { editTrainer } }) {
+        cache.modify({
+          fields: {
+            info(existingInfo = []) {
+              const newInfoRef = cache.writeFragment({
+                data: editTrainer,
+                fragment: gql`
+                  fragment newInfo on Trainer {
+                    name
+                    description
+                    email
+                    phoneNumber
+                    image
+                  }
+                `,
+              });
+              return [...existingInfo, newInfoRef];
+            },
           },
-      
-    })
-    console.log(values)
+        });
+        props.history.push("/trainers");
+      },
+    });
+  console.log(values);
 
   function editTrainerCallback() {
-    editTrainer({ variables: { trainerId, values } });;
+    editTrainer({ variables: { trainerId, values } });
   }
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
-  
 
   let trainerMarkup;
   if (!getTrainer) {
@@ -114,7 +116,7 @@ function SingleTrainer(props) {
             </Button>
           </Form.Field>
           {mutationLoading && <p>Loading...</p>}
-        {mutationError && <p>Error :( Please try again</p>}
+          {mutationError && <p>Error :( Please try again</p>}
         </Form>
       </>
     );

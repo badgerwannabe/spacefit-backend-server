@@ -81,12 +81,14 @@ export const EDIT_TRAININGS_MUTATION = gql`
     $trainingDescription: String
     $trainerId: ID
     $trainingImage: String
+    $trainingId: ID!
   ) {
     editTraining(
       trainingName: $trainingName
       trainingDescription: $trainingDescription
       trainerId: $trainerId
       trainingImage: $trainingImage
+      trainingId: $trainingId
     ) {
       id
       trainingName

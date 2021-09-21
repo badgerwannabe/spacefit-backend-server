@@ -97,6 +97,7 @@ module.exports = gql`
       trainerId: ID
       trainingId: ID!
       image: String
+      trainingImage: String
     ): Training!
     createDay(date: String!): Day!
     createPerson(
