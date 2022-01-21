@@ -7,15 +7,18 @@ import DeleteButton from "../DeleteButton";
 function TrainerCard({
   
 
-  trainer: { name, createdAt, id, description, email, phoneNumber },
+  trainer: { name, createdAt, id, description, email, phoneNumber, image },
+  
 }) {
   return (
+    
     <Card fluid>
       <Card.Content>
         <Image
+        
           floated="right"
           size="medium"
-          src="https://react.semantic-ui.com/images/avatar/large/molly.png"
+          src={image}
         />
         <Card.Header  as={Link}
               to={`/trainers/${id}`}  >{name}</Card.Header>

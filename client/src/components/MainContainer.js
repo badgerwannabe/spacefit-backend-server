@@ -5,17 +5,17 @@ import TrainersComponent from "./trainer-components/trainersComponent";
 import TrainingComponent from "./training-components/trainingComponent";
 import TemplateComponent from "./template-components/templateComponent";
 import { Link } from "react-router-dom";
+import ScheduleComponent from "./schedule-components/scheduleComponent";
 
 function MainContainer(props) {
-
   const pathname = window.location.pathname;
 
   const path = pathname === "/" ? "schedule" : pathname.substr(1);
-  console.log(pathname)
+  console.log(pathname);
 
   const [activeItem, setActiveItem] = useState(path);
   const handleItemClick = (e, { name }) => setActiveItem(name);
-  console.log(activeItem)
+  console.log(activeItem);
   const MainContainer = (
     <Grid>
       <Grid.Row>
@@ -74,10 +74,11 @@ function MainContainer(props) {
         </Grid.Column>
 
         <Grid.Column width={12}>
-          <Grid  centered padded columns={3}>
+          <Grid centered padded columns={2}>
             {activeItem === "trainers" ? <TrainersComponent /> : ""}
             {activeItem === "trainings" ? <TrainingComponent /> : ""}
             {activeItem === "templates" ? <TemplateComponent /> : ""}
+            {activeItem === "schedule" ? <ScheduleComponent /> : ""}
           </Grid>
         </Grid.Column>
       </Grid.Row>
